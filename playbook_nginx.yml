@@ -23,6 +23,7 @@
         dest: "{{ root_dir }}/index.html"
       become: yes
       when: ansible_os_family == "Debian"
+      tags: index
       
 
   handlers:
