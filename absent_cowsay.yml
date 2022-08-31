@@ -1,0 +1,6 @@
+- hosts: webservers
+  tasks:
+    - name: remove cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: absent

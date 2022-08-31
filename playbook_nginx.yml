@@ -17,6 +17,16 @@
       become: yes
       when: ansible_os_family == "Debian"
 
+    - name: install cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: present
+        update_cache: yes
+
+    - name: cow say greeting
+      ansible.builtin.shell: "cowsay '{{ greeting }}'"
+      register: cowsay_greeting    
+
     - name: update index.html
       ansible.builtin.template:
         src: files/index.html
