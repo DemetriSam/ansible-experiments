@@ -6,6 +6,7 @@
         state: latest
         update_cache: yes
       become: yes
+      when: ansible_os_family == "Debian"
 
     - name: update nginx config
       ansible.builtin.template:
@@ -14,12 +15,14 @@
       notify:
         - restart nginx
       become: yes
+      when: ansible_os_family == "Debian"
 
     - name: update index.html
       ansible.builtin.template:
         src: files/index.html
         dest: "{{ root_dir }}/index.html"
       become: yes
+      when: ansible_os_family == "Debian"
       
 
   handlers:

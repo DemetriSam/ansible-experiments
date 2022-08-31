@@ -1,5 +1,4 @@
 - hosts: webservers
-  gather_facts: no
   vars: 
     users:
       - jaime
@@ -11,9 +10,11 @@
       name: git
       state: absent
     become: yes
+    when: ansible_os_family == "Debian"
 
   - name: Remove gitconfig
     ansible.builtin.file:
       path: "/home/{{ item }}/.gitconfig"
       state: absent
     loop: "{{ users }}"
+    when: ansible_os_family == "Debian"
