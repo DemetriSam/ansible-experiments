@@ -1,0 +1,7 @@
+- hosts: all
+
+- name: git
+  ansible.builtin.import_playbook:  playbook_install_git.yml
+
+- name: nginx
+  ansible.builtin.import_playbook: playbook_nginx.yml
