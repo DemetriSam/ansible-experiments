@@ -1,0 +1,6 @@
+- hosts: localhost
+  tasks:
+    - name: install nodejs globally
+      community.general.npm:
+        global: yes
+        state: latest
